@@ -75,23 +75,22 @@ fun RegisterScreen(navController: NavController) {
         Spacer(modifier = Modifier.height(24.dp))
 
         Button(
-            onClick = { /* Lógica de registro */ },
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text("Registrarse")
-        }
-        Button(
-            onClick = {
-                if(email.isNotBlank()
-                    && password.isNotBlank()
-                    && confirmPassword.isNotBlank())
-                {
-                    navController.navigate("login")
+            onClick = { 
+                if(email.isNotBlank() && name.isNotBlank() && password.isNotBlank()) {
+                    navController.navigate("login") 
                 }
             },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Iniciar Sesión")
+            Text("Registrarse")
+        }
+        TextButton(
+            onClick = {
+                navController.navigate("login")
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text("¿Ya tienes cuenta? Inicia Sesión")
         }
     }
 }
