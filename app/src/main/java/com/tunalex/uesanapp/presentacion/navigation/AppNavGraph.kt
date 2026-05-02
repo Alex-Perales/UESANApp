@@ -1,0 +1,19 @@
+package com.tunalex.uesanapp.presentacion.navigation
+
+import androidx.compose.runtime.Composable
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.tunalex.uesanapp.presentacion.auth.LoginScreen
+import com.tunalex.uesanapp.presentacion.auth.RegisterScreen
+import com.tunalex.uesanapp.presentacion.home.HomeScreen
+
+@Composable
+fun AppNavGraph(){
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = "register") {
+        composable("register"){RegisterScreen(navController)}
+        composable("login"){LoginScreen()}
+        composable("home"){HomeScreen() }
+    }
+}
