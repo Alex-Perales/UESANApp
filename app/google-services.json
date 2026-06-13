@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "908976087482",
+    "project_id": "alex-uesan",
+    "storage_bucket": "alex-uesan.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908976087482:android:425b829fccd029968bfd83",
+        "android_client_info": {
+          "package_name": "com.tunalex.uesanapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPpeg5B21N3031eGdw9Lx90HWS9noYwsM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
