@@ -35,4 +35,7 @@ object FirebaseAuthManager {
             Result.failure(e)
         }
     }
+    suspend fun logout(){
+        auth.signOut()
+    }
 }
