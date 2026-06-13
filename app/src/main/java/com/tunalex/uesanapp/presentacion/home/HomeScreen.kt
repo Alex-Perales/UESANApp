@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
@@ -15,14 +14,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-
-import androidx.compose.material3.Card
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
@@ -49,26 +40,17 @@ fun HomeScreen(viewModel: FavoritesViewModel) {
 
     Column(
         modifier = Modifier
-            .padding(16.dp)
             .fillMaxSize()
+            .padding(16.dp)
             .statusBarsPadding(),
-        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Ranking fifa 2026", style = MaterialTheme.typography.headlineMedium)
+        Text("Ranking FIFA 2026", style = MaterialTheme.typography.headlineMedium)
         Spacer(modifier = Modifier.height(8.dp))
         LazyColumn {
             items(mockCountries) { country ->
                 val isFavorite = country.name in favoriteNames
                 Card(modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)) {
-    ){
-        Text("Ranking fifa 2026", style = MaterialTheme.typography.headlineMedium)
-        Spacer(modifier = Modifier.height(8.dp))
-        LazyColumn{
-            items(mockCountries){ country ->
-                Card(
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp)
-                ){
                     Row(
                         modifier = Modifier.padding(16.dp),
                         verticalAlignment = Alignment.CenterVertically
@@ -90,10 +72,6 @@ fun HomeScreen(viewModel: FavoritesViewModel) {
                                 contentDescription = if (isFavorite) "Quitar favorito" else "Agregar favorito",
                                 tint = if (isFavorite) Color.Red else Color.Gray
                             )
-                        }
-                        Column {
-                            Text(country.name.uppercase(), style = MaterialTheme.typography.titleMedium)
-                            Text("Ranking FIFA 2026: ${country.ranking}")
                         }
                     }
                 }

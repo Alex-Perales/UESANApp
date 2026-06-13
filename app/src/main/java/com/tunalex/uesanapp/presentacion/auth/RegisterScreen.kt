@@ -24,14 +24,14 @@ fun RegisterScreen(navController: NavController) {
     var password by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
     val context = LocalContext.current
-    
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
             .statusBarsPadding(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally    
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = "Registro de usuario",
@@ -45,7 +45,7 @@ fun RegisterScreen(navController: NavController) {
             value = name,
             onValueChange = { name = it },
             label = { Text("Nombre Completo") },
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth()
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -55,7 +55,7 @@ fun RegisterScreen(navController: NavController) {
             onValueChange = { email = it },
             label = { Text("Correo Electrónico") },
             modifier = Modifier.fillMaxWidth(),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -65,7 +65,7 @@ fun RegisterScreen(navController: NavController) {
             onValueChange = { password = it },
             label = { Text("Contraseña") },
             modifier = Modifier.fillMaxWidth(),
-            visualTransformation = PasswordVisualTransformation(),
+            visualTransformation = PasswordVisualTransformation()
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -75,27 +75,23 @@ fun RegisterScreen(navController: NavController) {
             onValueChange = { confirmPassword = it },
             label = { Text("Confirmar Contraseña") },
             modifier = Modifier.fillMaxWidth(),
-            visualTransformation = PasswordVisualTransformation(),
+            visualTransformation = PasswordVisualTransformation()
         )
 
         Spacer(modifier = Modifier.height(24.dp))
 
         Button(
-            onClick = { 
-
-                if(email.isNotBlank() && name.isNotBlank() && password.isNotBlank() && password == confirmPassword) {
+            onClick = {
+                if (email.isNotBlank() && name.isNotBlank() && password.isNotBlank() && password == confirmPassword) {
                     CoroutineScope(Dispatchers.Main).launch {
                         val result = FirebaseAuthManager.registerUser(name, email, password)
-                        if(result.isSuccess) {
+                        if (result.isSuccess) {
                             navController.navigate("login")
                         } else {
                             val error = result.exceptionOrNull()?.message ?: "Error desconocido"
                             Toast.makeText(context, error, Toast.LENGTH_LONG).show()
                         }
                     }
-                if(email.isNotBlank() && name.isNotBlank() && password.isNotBlank()) {
-                    navController.navigate("login") 
-
                 }
             },
             modifier = Modifier.fillMaxWidth()
@@ -103,13 +99,8 @@ fun RegisterScreen(navController: NavController) {
             Text("Registrarse")
         }
 
-        
-
-
         TextButton(
-            onClick = {
-                navController.navigate("login")
-            },
+            onClick = { navController.navigate("login") },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("¿Ya tienes cuenta? Inicia Sesión")
