@@ -27,6 +27,8 @@ fun AppNavGraph() {
         composable("home") {
             DrawerScaffold(navController) {
                 HomeScreen(favoritesViewModel)
+
+                HomeScreen()
             }
         }
         composable("permissions") {
@@ -37,6 +39,8 @@ fun AppNavGraph() {
         composable("favorites") {
             DrawerScaffold(navController) {
                 FavoritesScreen(favoritesViewModel)
+
+                Text("Pantalla de Favoritos")
             }
         }
     }

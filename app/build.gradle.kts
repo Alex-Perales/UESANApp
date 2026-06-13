@@ -75,6 +75,7 @@ dependencies {
     //Coil compose
     implementation("io.coil-kt:coil-compose:2.7.0")
 
+
     // Coroutines Play Services for .await()
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1")
 

@@ -82,6 +82,7 @@ fun RegisterScreen(navController: NavController) {
 
         Button(
             onClick = { 
+
                 if(email.isNotBlank() && name.isNotBlank() && password.isNotBlank() && password == confirmPassword) {
                     CoroutineScope(Dispatchers.Main).launch {
                         val result = FirebaseAuthManager.registerUser(name, email, password)
@@ -92,13 +93,19 @@ fun RegisterScreen(navController: NavController) {
                             Toast.makeText(context, error, Toast.LENGTH_LONG).show()
                         }
                     }
+                if(email.isNotBlank() && name.isNotBlank() && password.isNotBlank()) {
+                    navController.navigate("login") 
+
                 }
             },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Registrarse")
         }
+
         
+
+
         TextButton(
             onClick = {
                 navController.navigate("login")
