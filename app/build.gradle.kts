@@ -6,6 +6,12 @@ plugins {
     kotlin("kapt")
 }
 
+val localProperties = java.util.Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.inputStream().use { localProperties.load(it) }
+}
+
 android {
     namespace = "com.tunalex.uesanapp"
     compileSdk = 35
@@ -16,8 +22,8 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "GROQ_API_KEY", "\"${localProperties["GROQ_API_KEY"] ?: ""}\"")
     }
 
     buildTypes {
@@ -38,6 +44,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -74,7 +81,6 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.9.8")
     //Coil compose
     implementation("io.coil-kt:coil-compose:2.7.0")
-
 
     // Coroutines Play Services for .await()
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1")

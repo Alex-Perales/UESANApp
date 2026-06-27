@@ -5,9 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [CountryEntity::class], version = 1)
+@Database(entities = [CountryEntity::class, ChatSession::class, ChatMessage::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun countryDao(): CountryDao
+    abstract fun chatDao(): ChatDao
 
     companion object {
         @Volatile private var INSTANCE: AppDatabase? = null
@@ -18,7 +19,9 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "country_db"
-                ).build().also { INSTANCE = it }
+                )
+                .fallbackToDestructiveMigration()
+                .build().also { INSTANCE = it }
             }
     }
 }

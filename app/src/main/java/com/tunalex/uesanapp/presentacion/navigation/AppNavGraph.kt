@@ -11,12 +11,15 @@ import com.tunalex.uesanapp.presentacion.favorites.FavoritesScreen
 import com.tunalex.uesanapp.presentacion.favorites.FavoritesViewModel
 import com.tunalex.uesanapp.presentacion.home.HomeScreen
 import com.tunalex.uesanapp.presentacion.apifootball.ApiFootballScreen
+import com.tunalex.uesanapp.presentacion.chat.ChatScreen
+import com.tunalex.uesanapp.presentacion.chat.ChatViewModel
 import androidx.compose.material3.Text
 
 @Composable
 fun AppNavGraph() {
     val navController = rememberNavController()
     val favoritesViewModel: FavoritesViewModel = viewModel()
+    val chatViewModel: ChatViewModel = viewModel()
 
     NavHost(navController = navController, startDestination = "login") {
         composable("register") {
@@ -44,6 +47,9 @@ fun AppNavGraph() {
             DrawerScaffold(navController) {
                 ApiFootballScreen()
             }
+        }
+        composable("chat") {
+            ChatScreen(viewModel = chatViewModel)
         }
     }
 }
